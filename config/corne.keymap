@@ -18,7 +18,7 @@
 #define LEF 3
 #define TRI 4
 
-/ {
+/
     behaviors {
         ht: hold_tap {
             label = "hold_tap";
@@ -54,7 +54,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                  &kp RGUI   &lt LEF TAB &kp LSHIFT    &kp SPACE  &lt RIG TAB &kp RALT
+                                  &kp LGUI   &lt LEF TAB &kp LSHIFT    &kp SPACE  &lt RIG TAB &kp RALT
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
