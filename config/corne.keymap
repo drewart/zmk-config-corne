@@ -8,28 +8,83 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+// Home row mods macro
+#define HRML(k2,k3,k4) &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
+#define HRMR(k1,k2,k3) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3
+#define WHRML(k2,k3,k4) &ht LALT k2  &ht LGUI k3  &ht LCTRL k4
+#define WHRMR(k1,k2,k3) &ht RCTRL k1  &ht RGUI k2  &ht RALT k3
+
+// base https://github.com/zmkfirmware/zmk/blob/main/app/boards/shields/corne/corne.keymap
+// 5x3 +2 examples
+// * https://github.com/zmkfirmware/zmk/blob/main/app/boards/shields/cradio/cradio.keymap
+// * https://github.com/zmkfirmware/zmk/blob/main/app/boards/shields/splitkb_aurora_sweep/splitkb_aurora_sweep.keymap
+// TODO:
+// like the keys mods from https://github.com/SethuEapen/zmk-sweep-updated/blob/main/config/cradio.keymap
+// like to try mods from https://github.com/joe-scotto/zmk-config-corneview/blob/main/config/corne.keymap
+// toggle to a number pad layer for right hand + / - * enter
+// handle shift
+//
+
+
+// ⌘ Command Cmd ~ and ⌘ shift ~
+// Caps Lock ⇪
+// Shift ⇧
+// Option (or Alt) ⌥
+// Control Ctrl ^
+// Control C for terminal
+// esc for vim
+
+#define MAC 0
+#define WIN 1
+#define RIGHT 2
+#define LEFT 3
+//#define NUM 4
+//#define NAV 5
+
+
 / {
+
+        behaviors {
+                sm: space_mod {
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "SPACE_MOD";
+                        #binding-cells = <2>;
+                        flavor = "balanced";
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <125>;
+                        bindings = <&kp>, <&kp>;
+                };
+        }
         keymap {
                 compatible = "zmk,keymap";
 
+                // MAC
                 default_layer {
-// -----------------------------------------------------------------------------------------
-// | x  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | x BKSP |
-// | x CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | x  '   |
-// | x SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | x ESC  |
-// -----------------------------------------------------------------------------------------
-// | |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P    |  |
-// | |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  BKSP |  |
-// | |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  ESC  |  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+
+// |    |  Q  |  W     |  E     |  R     |  T    |   |  Y  |  U   |  I  |  O  |  P    |  |
+// |    |  A  |  S     |  D     |  F     |  G    |   |  H  |  J   |  K  |  L  |  BKSP |  |
+// |    |  Z  |  X     |  C     |  V     |  B    |   |  N  |  M   |  ,  |  .  |  ESC  |  |
+//                     | GUI    | LEFT   | Shift |   | SPC | RSE  | ALT |
                         bindings = <
-   &none &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &none
-   &none &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp BKSP &none
-   &none &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp ESC  &none
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp LSHFT
+// 1     2     3       4        5 .             6 .             7 .       8 .           9 .        10      11        12
+   &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
+   &none &kp A HRML(S  D        F)              &kp G           &kp H     HRMR(J        K          L)      &kp BKSP  &none
+   &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
+                       &kp LGUI &mo LEFT        &lt MAC_CODE TAB   &kp SPACE    &lt RIGHT TAB &kp LSHFT
                         >;
                 };
-                lower_layer {
+                // WIN
+                win_layer {
+                        bindings = <
+   &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
+   &none &kp A WHRML(S  D        F)              &kp G           &kp H     WHRMR(J        K          L)      &kp BKSP  &none
+   &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
+                       &kp LGUI &mo LEFT       &sm LSHFT     &kp SPACE    &lt RIGHT TAB &kp LSHFT
+                        >;
+                };
+
+                // LEFT
+                left_layer {
 // -----------------------------------------------------------------------------------------
 // |  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
 // |  | BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -39,22 +94,22 @@
                         bindings = <
      &none &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &none
      &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &none
-     &none  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &none
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+     &none &bt BT_CLR  &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &none
+                                    &trans     &trans       &trans      &trans  &trans   &trans
                         >;
                 };
 
-                raise_layer {
+                right_layer {
 // -----------------------------------------------------------------------------------------
 // | |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |  |
 // | |  ;  |  '  |     |     |  `  |   |  -  |  =  |  [  |  ]  |  \  |  |
 // | |  /  |     |     |     |  ~  |   |  _  |  +  |  {  |  }  | "|" |  |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &none &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &none
-   &none &kp SEMI &kp SQT &trans   &trans   &kp GRAVE      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &none
-   &none &kp FSLH &trans &trans   &trans   &kp TILDE      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &none
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+   &none &kp EXCL &kp AT   &kp HASH &kp DLLR  &kp PRCNT       &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &none
+   &none &kp SEMI &kp SQT  &trans   &trans    &kp GRAVE       &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &none
+   &none &kp FSLH &tog WIN &trans   &trans    &kp TILDE       &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &none
+                           &trans   &trans    &trans          &trans    &trans    &trans
                         >;
                 };
         };
