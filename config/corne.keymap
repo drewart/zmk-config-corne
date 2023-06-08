@@ -68,7 +68,7 @@
                         bindings = <
 // 1     2     3       4        5 .             6 .             7 .       8 .           9 .        10      11        12
    &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
-   &none &kp A HRML(S  D        F)              &kp G           &kp H     HRMR(J        K          L)      &kp BKSP  &none
+   &none &kp A HRML(S, D,       F)              &kp G           &kp H     HRMR(J,       K,         L)      &kp BKSP  &none
    &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
                        &kp LGUI &mo LEFT        &lt MAC_CODE TAB   &kp SPACE    &lt RIGHT TAB &kp LSHFT
                         >;
@@ -77,7 +77,7 @@
                 win_layer {
                         bindings = <
    &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
-   &none &kp A WHRML(S  D        F)              &kp G           &kp H     WHRMR(J        K          L)      &kp BKSP  &none
+   &none &kp A WHRML(S, D,      F)              &kp G           &kp H     WHRMR(J,     K,         L)      &kp BKSP  &none
    &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
                        &kp LGUI &mo LEFT       &sm LSHFT     &kp SPACE    &lt RIGHT TAB &kp LSHFT
                         >;
@@ -94,8 +94,8 @@
                         bindings = <
      &none &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &none
      &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &none
-     &none &bt BT_CLR  &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &none
-                                    &trans     &trans       &trans      &trans  &trans   &trans
+     &none &bt BT_CLR  &trans       &trans        &trans       &trans         &trans   &trans   &trans &trans    &trans &none
+                                    &trans        &trans       &trans         &trans  &trans   &trans
                         >;
                 };
 
