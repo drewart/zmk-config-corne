@@ -34,10 +34,10 @@
 // Control C for terminal
 // esc for vim
 
-#define MAC 0
-#define WIN 1
-#define RIG 2
-#define LEF 3
+#define GO_MAC 0
+#define GO_WIN 1
+#define GO_RIGHT 2
+#define GO_LEFT 3
 //#define NUM 4
 //#define NAV 5
 
@@ -82,16 +82,16 @@
    &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
    &none &kp A HRML(S, D,       F)              &kp G           &kp H     HRMR(J,       K,         L)      &kp BKSP  &none
    &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
-                       &kp LGUI &mo LEF         &kp TAB   &kp SPACE    &lt RIG TAB &kp LSHFT
+                       &kp LGUI &mo GO_LEFT     &kp TAB         &kp SPACE &lt GO_RIGHT TAB &kp LSHFT
                         >;
                 };
                 // WIN
                 win_layer {
                         bindings = <
-   &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
-   &none &kp A WHRML(S, D,      F)              &kp G           &kp H     WHRMR(J,     K,         L)      &kp BKSP  &none
-   &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
-                       &kp LGUI &mo LEF       &sm LSHFT     &kp SPACE    &lt RIG TAB &kp LSHFT
+   &none &kp Q &kp W    &kp E    &kp R           &kp T           &kp Y        &kp U         &kp I      &kp O   &kp P     &none
+   &none &kp A WHRML(S, D,       F)              &kp G           &kp H        WHRMR(J,     K,         L)      &kp BKSP  &none
+   &none &kp Z &kp X    &kp C    &kp V           &kp B           &kp N        &kp M         &kp COMMA  &kp DOT &kp RET   &none
+                        &kp LGUI &mo GO_LEFT     &kp TAB         &kp SPACE    &lt GO_RIGHT TAB &kp LSHFT
                         >;
                 };
 
@@ -118,10 +118,10 @@
 // | |  /  |     |     |     |  ~  |   |  _  |  +  |  {  |  }  | "|" |  |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &none &kp EXCL &kp AT   &kp HASH &kp DLLR  &kp PRCNT       &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &none
-   &none &kp SEMI &kp SQT  &trans   &trans    &kp GRAVE       &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &none
-   &none &kp FSLH &tog WIN &trans   &trans    &kp TILDE       &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &none
-                           &trans   &trans    &trans          &trans    &trans    &trans
+   &none &kp EXCL &kp AT      &kp HASH &kp DLLR  &kp PRCNT       &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &none
+   &none &kp SEMI &kp SQT     &trans   &trans    &kp GRAVE       &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &none
+   &none &kp FSLH &tog GO_WIN &trans   &trans    &kp TILDE       &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &none
+                              &trans   &trans    &trans          &trans    &trans    &trans
                         >;
                 };
         };
