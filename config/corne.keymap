@@ -36,8 +36,8 @@
 
 #define MAC 0
 #define WIN 1
-#define RIGHT 2
-#define LEFT 3
+#define RIG 2
+#define LEF 3
 //#define NUM 4
 //#define NAV 5
 
@@ -70,7 +70,7 @@
    &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
    &none &kp A HRML(S, D,       F)              &kp G           &kp H     HRMR(J,       K,         L)      &kp BKSP  &none
    &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
-                       &kp LGUI &mo LEFT        &lt MAC_CODE TAB   &kp SPACE    &lt RIGHT TAB &kp LSHFT
+                       &kp LGUI &mo LEF        &lt MAC_CODE TAB   &kp SPACE    &lt RIG TAB &kp LSHFT
                         >;
                 };
                 // WIN
@@ -79,7 +79,7 @@
    &none &kp Q &kp W   &kp E    &kp R           &kp T           &kp Y     &kp U         &kp I      &kp O   &kp P     &none
    &none &kp A WHRML(S, D,      F)              &kp G           &kp H     WHRMR(J,     K,         L)      &kp BKSP  &none
    &none &kp Z &kp X   &kp C    &kp V           &kp B           &kp N     &kp M         &kp COMMA  &kp DOT &kp RET   &none
-                       &kp LGUI &mo LEFT       &sm LSHFT     &kp SPACE    &lt RIGHT TAB &kp LSHFT
+                       &kp LGUI &mo LEF       &sm LSHFT     &kp SPACE    &lt RIG TAB &kp LSHFT
                         >;
                 };
 
