@@ -1,8 +1,5 @@
 on: [push, pull_request, workflow_dispatch]
 
-  archive_name: 
-
-
 jobs:
   build:
     runs-on: [ self-hosted ]
