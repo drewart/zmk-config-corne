@@ -1,9 +1,7 @@
 on: [push, pull_request, workflow_dispatch]
 
-env:
-  archive_name: firmware-${{ vars.GITHUB_RUN_NUMBER }}
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
-      archive_name: ${{ env.archive_name }}
+      archive_name: "firmware-${{ vars.GITHUB_RUN_NUMBER }}"
