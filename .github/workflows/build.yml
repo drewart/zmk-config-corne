@@ -1,13 +1,10 @@
 on: [push, pull_request, workflow_dispatch]
 
+env:
+  archive_name: firmware-${{ vars.GITHUB_RUN_NUMBER }}
+
 jobs:
   build:
-    runs-on: [ self-hosted ]
-    steps:
-    - name: Set Git Hash
-      id: vars
-      run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-    - name: "build firmware"
-      uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-      with:
-        archive_name: firmware-${{ env.SHA_SHORT }}
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      archive_name: ${{ vars.archive_name }}
