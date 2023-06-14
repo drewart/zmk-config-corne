@@ -25,7 +25,7 @@ on:
         type: string
 
 env:
-  ARCHIVE_NAME: "firmware-${{ github.run_number }}"
+  ARCHIVE_NAME: "firmware_${{ github.run_number }}"
 
 jobs:
   matrix:
@@ -113,6 +113,7 @@ jobs:
           then
             cp "build/zephyr/zmk.${{ inputs.fallback_binary }}" "build/artifacts/${{ env.artifact_name }}.${{ inputs.fallback_binary }}"
           fi
+          echo archive_name: ${{ env.ARCHIVE_NAME }}
 
       - name: Archive (${{ env.display_name }})
         uses: actions/upload-artifact@v3
