@@ -25,7 +25,7 @@ on:
         type: string
 
 env:
-  ARCHIVE_NAME: "firmware-2023"
+  ARCHIVE_NAME: "firmware-${{ github.run_number }}"
 
 jobs:
   matrix:
@@ -64,7 +64,6 @@ jobs:
           echo "extra_cmake_args=${shield:+-DSHIELD=\"$shield\"}" >> $GITHUB_ENV
           echo "display_name=${shield:+$shield - }${{ matrix.board }}" >> $GITHUB_ENV
           echo "artifact_name=${shield:+$shield-}${{ matrix.board }}-zmk" >> $GITHUB_ENV
-          echo "arhive: ${{ env.ARCHIVE_NAME }}"
           echo "run number: ${{ github.run_number }}"
 
       - name: Checkout
